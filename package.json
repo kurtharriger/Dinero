@@ -4,7 +4,8 @@
   "description": "Luchador",
   "author": "Rally Software",
   "scripts": {
-    "debug": "node --harmony --debug-brk node_modules/jest-cli/bin/jest.js --runInBand"
+    "debug": "node --harmony --debug-brk node_modules/jest-cli/bin/jest.js --runInBand",
+    "postinstall": "cp -r node_modules/ux-bootstrap/dist/* ./public/ux-bootstrap/"
   },
   "repository": {
     "type": "git",

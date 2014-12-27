@@ -1,7 +1,14 @@
 var converter = new Showdown.converter();
 
+
+//TODO: Hack to clear out sdk styles. Now we are pure ux-bootstrap
 Rally.onReady(()=>{
-  console.log("yo");
+  _.each(
+    document.querySelectorAll("link[href^='https://rally1']"),
+    function(script){
+      script.remove();
+    }
+  );
 });
 
 var Comment = React.createClass({
