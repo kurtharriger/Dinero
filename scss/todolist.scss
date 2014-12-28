@@ -1,0 +1,12 @@
+//todo list
+.todo-list {
+	background-color: $white;
+	border-color: $grey4;
+	.note-toolbar,
+	.note-statusbar {
+		background-color: $white;
+		.note-resizebar {
+			border-top: none;
+		}
+	}
+}
