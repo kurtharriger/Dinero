@@ -1,14 +1,18 @@
 
 
-//TODO: Hack to clear out sdk styles. Now we are pure ux-bootstrap
-Rally.onReady(()=>{
-  _.each(
-    document.querySelectorAll("link[href^='https://rally1']"),
-    function(script){
-      script.remove();
-    }
-  );
+var Item = React.createClass({
+  render: function() {
+    return (
+      <div className="item">
+        <h2 className="itemOwner">
+          {this.props.owner}
+        </h2>
+      </div>
+    );
+  }
 });
+
+
 
 var Comment = React.createClass({
   render: function() {
@@ -124,4 +128,12 @@ React.render(
   <CommentBox url="comments.json" pollInterval={2000} />,
   document.getElementById('content')
 );
-
+//TODO: Hack to clear out sdk styles. Now we are pure ux-bootstrap
+Rally.onReady(()=>{
+  _.each(
+    document.querySelectorAll("link[href^='https://rally1']"),
+    function(script){
+      script.remove();
+    }
+  );
+});
