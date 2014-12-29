@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head> 
-    <script src="https://rally1.rallydev.com/apps/2.0rc3/sdk.js"></script>
     <link rel="stylesheet" href="/lib/ux-bootstrap/css/ux-bootstrap-all.min.css" />
+    <link rel="stylesheet" href="css/all.css" />
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="/lib/ux-bootstrap/js/ux-bootstrap-all.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.12.1/react.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.12.1/JSXTransformer.js"></script>
+    <script type="text/jsx;harmony=true" src="js/todolist.jsx"></script>
+    <script type="text/jsx;harmony=true" src="js/ux-playground.jsx"></script>
   </head>
   <body>
   <nav class="navbar navbar-default navbar-inverse" role="navigation">
@@ -41,6 +45,9 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-    <div id="content"></div>
+  <div>
+    Item Component
+    <div id="item"></div>
+  </div>
   </body>
 </html>

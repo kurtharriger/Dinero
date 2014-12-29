@@ -1,10 +1,19 @@
-//todo list
-.todo-list {
-	.note-toolbar,
-	.note-statusbar {
-		.note-resizebar {
-			border-top: none;
-		}
-	}
+//item
+.item {
+  .gripper {
+    background-image: image-url("/img/gripper-inactive.png");
+    background-color: #cccccc;
+    width:11px;
+    height:18px;
+    float:left;
+  }
+  .checkbox-label{
+    float:left;
+  }
+  .avatar{
+    width:25px;
+    height:25px;
+    float:left;
+  }
 }
 
