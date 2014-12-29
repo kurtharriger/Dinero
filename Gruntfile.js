@@ -33,33 +33,6 @@ module.exports = function (grunt) {
       }
     },
 
-    copy: {
-      css: {
-        flatten: true,
-        expand: true,
-        src: [
-          'node_modules/bootstrap/dist/**/*.css',
-          'node_modules/bootstrap-select/dist/**/*.css'
-        ],
-        dest: 'dist/css/',
-        options: {
-          process: function (content, srcpath) {
-            return content.replace(/\/\*# sourceMappingURL=.*map \*\//g, '');
-          }
-        }
-      },
-
-      fonts: {
-        flatten: true,
-        expand: true,
-        src: [
-          'fonts/**'
-        ],
-        dest: 'dist/fonts/'
-      }
-
-    },
-
     watch: {
       options: {
         nospawn: true,
@@ -69,7 +42,7 @@ module.exports = function (grunt) {
       sass: {
         // We watch and compile sass files as normal but don't live reload here
         files: ['scss/*.scss'],
-        tasks: ['sass', 'copy:css']
+        tasks: ['sass']
       },
 
       server: {
@@ -99,15 +72,8 @@ module.exports = function (grunt) {
           livereload: reloadPort
         }
       }
-    },
-
-    release: {
-      options: {
-        push: false,
-        pushTags: false
-      }
     }
-  });
+});
 
   grunt.config.requires('watch.server.files');
   files = grunt.config('watch.server.files');
