@@ -28,7 +28,7 @@ module.exports = function (grunt) {
           sourcemap: 'none'
         },
         files: {
-          'dist/css/all.css': 'scss/style.scss'
+          'dist/css/all.css': 'scss/all.scss'
         }
       }
     },
@@ -80,21 +80,21 @@ module.exports = function (grunt) {
       },
 
       js: {
-        files: ['public/scripts/*'],
+        files: ['dist/js/*'],
         options: {
           livereload: reloadPort
         }
       },
 
       css: {
-        files: ['../dist/css/*.css'],
+        files: ['dist/css/*.css'],
         options: {
           livereload: reloadPort
         }
       },
 
       static: {
-        files: ['static-html/*.html'],
+        files: ['dist/*.html'],
         options: {
           livereload: reloadPort
         }

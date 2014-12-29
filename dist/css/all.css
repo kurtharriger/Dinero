@@ -1,0 +1,4 @@
+/* line 5, ../../scss/all.scss */
+.todo-list .note-toolbar .note-resizebar,
+.todo-list .note-statusbar .note-resizebar {
+  border-top: none; }
