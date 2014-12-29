@@ -13,3 +13,6 @@
   width: 25px;
   height: 25px;
   float: left; }
+/* line 18, ../../scss/all.scss */
+.item .date {
+  float: left; }
