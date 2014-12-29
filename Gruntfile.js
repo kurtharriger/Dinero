@@ -28,24 +28,7 @@ module.exports = function (grunt) {
           sourcemap: 'none'
         },
         files: {
-          'dist/css/ux-bootstrap.css': 'scss/style.scss'
-        }
-      }
-    },
-
-    bump: {
-      options: {
-        commitFiles: ['package.json'],
-        updateConfigs: ['pkg'],
-        push: true,
-        pushTo: 'origin master'
-      }
-    },
-
-    shell: {
-      npmpub: {
-        command: function() {
-          return 'npm publish';
+          'dist/css/all.css': 'scss/style.scss'
         }
       }
     },

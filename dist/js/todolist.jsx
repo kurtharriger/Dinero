@@ -1,4 +1,3 @@
-var converter = new Showdown.converter();
 
 
 //TODO: Hack to clear out sdk styles. Now we are pure ux-bootstrap
@@ -13,7 +12,7 @@ Rally.onReady(()=>{
 
 var Comment = React.createClass({
   render: function() {
-    var rawMarkup = converter.makeHtml(this.props.children.toString());
+    var rawMarkup = this.props.children.toString();
     return (
       <div className="comment">
         <h2 className="commentAuthor">
