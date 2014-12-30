@@ -51,7 +51,7 @@ var List = React.createClass({
       );
     });
     return (
-      <div className="list">
+      <div className="list margin-top text-info">
         <h3>{this.props.text}</h3>
         {items}  
       </div>
