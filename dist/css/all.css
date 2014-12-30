@@ -16,3 +16,10 @@
 /* line 18, ../../scss/all.scss */
 .item .date {
   float: left; }
+
+/* line 23, ../../scss/all.scss */
+.noDateDisplay {
+  background-image: url(/img/calendar.png);
+  width: 25px;
+  height: 25px;
+  float: left; }
