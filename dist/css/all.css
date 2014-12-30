@@ -1,0 +1,25 @@
+/* line 3, ../../scss/all.scss */
+.item .gripper {
+  background-image: url(/img/gripper-inactive.png);
+  background-color: #cccccc;
+  width: 11px;
+  height: 18px;
+  float: left; }
+/* line 10, ../../scss/all.scss */
+.item .checkbox-label {
+  float: left; }
+/* line 13, ../../scss/all.scss */
+.item .avatar {
+  width: 25px;
+  height: 25px;
+  float: left; }
+/* line 18, ../../scss/all.scss */
+.item .date {
+  float: left; }
+
+/* line 23, ../../scss/all.scss */
+.noDateDisplay {
+  background-image: url(/img/calendar.png);
+  width: 25px;
+  height: 25px;
+  float: left; }

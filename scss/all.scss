@@ -1,0 +1,34 @@
+//item
+.item {
+  .gripper {
+    background-image: image-url("/img/gripper-inactive.png");
+    background-color: #cccccc;
+    width:11px;
+    height:18px;
+    float:left;
+  }
+  .checkbox-label{
+    float:left;
+  }
+  .avatar{
+    width:25px;
+    height:25px;
+    float:left;
+  }
+  .date{
+    float:left;
+  }
+}
+
+.noDateDisplay{
+  background-image: image-url("/img/calendar.png");
+  width:25px;
+  height:25px;
+  float:left;
+}
+
+.list{
+  div{
+    
+  }
+}

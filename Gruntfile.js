@@ -28,53 +28,9 @@ module.exports = function (grunt) {
           sourcemap: 'none'
         },
         files: {
-          'dist/css/ux-bootstrap.css': 'scss/style.scss'
+          'dist/css/all.css': 'scss/all.scss'
         }
       }
-    },
-
-    bump: {
-      options: {
-        commitFiles: ['package.json'],
-        updateConfigs: ['pkg'],
-        push: true,
-        pushTo: 'origin master'
-      }
-    },
-
-    shell: {
-      npmpub: {
-        command: function() {
-          return 'npm publish';
-        }
-      }
-    },
-
-    copy: {
-      css: {
-        flatten: true,
-        expand: true,
-        src: [
-          'node_modules/bootstrap/dist/**/*.css',
-          'node_modules/bootstrap-select/dist/**/*.css'
-        ],
-        dest: 'dist/css/',
-        options: {
-          process: function (content, srcpath) {
-            return content.replace(/\/\*# sourceMappingURL=.*map \*\//g, '');
-          }
-        }
-      },
-
-      fonts: {
-        flatten: true,
-        expand: true,
-        src: [
-          'fonts/**'
-        ],
-        dest: 'dist/fonts/'
-      }
-
     },
 
     watch: {
@@ -86,7 +42,7 @@ module.exports = function (grunt) {
       sass: {
         // We watch and compile sass files as normal but don't live reload here
         files: ['scss/*.scss'],
-        tasks: ['sass', 'copy:css']
+        tasks: ['sass']
       },
 
       server: {
@@ -97,34 +53,27 @@ module.exports = function (grunt) {
       },
 
       js: {
-        files: ['public/scripts/*'],
+        files: ['dist/js/*'],
         options: {
           livereload: reloadPort
         }
       },
 
       css: {
-        files: ['../dist/css/*.css'],
+        files: ['dist/css/*.css'],
         options: {
           livereload: reloadPort
         }
       },
 
       static: {
-        files: ['static-html/*.html'],
+        files: ['dist/*.html'],
         options: {
           livereload: reloadPort
         }
       }
-    },
-
-    release: {
-      options: {
-        push: false,
-        pushTags: false
-      }
     }
-  });
+});
 
   grunt.config.requires('watch.server.files');
   files = grunt.config('watch.server.files');
