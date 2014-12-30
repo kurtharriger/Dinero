@@ -32,13 +32,30 @@ var Item = React.createClass({
         <div className="gripper"></div>
         <label className="checkbox-label">
           <input type="checkbox"/>
-          {this.props.data.text}
+          {data.text}
         </label>
-        <img className="avatar" src={this.props.data.avatarUrl}/>
-        <DateDisplay date={this.props.data.date}/>
+        <img className="avatar" src={data.avatarUrl}/>
+        <DateDisplay date={data.date}/>
       </div>
     );
   }
 });
 
+var List = React.createClass({
+  render: function() {
+    var items = _.map(this.props.items,function(item){
+     return (
+       <div>
+        <Item data={item} /> 
+       </div>
+      );
+    });
+    return (
+      <div className="list">
+        <h3>{this.props.text}</h3>
+        {items}  
+      </div>
+    );
+  }
+});
 

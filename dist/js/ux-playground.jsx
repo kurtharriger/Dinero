@@ -25,3 +25,10 @@ React.render(
   <Item data={noAvatarAndNoDate} />,
   document.getElementById('noavatar-nodate-item')
 );
+
+var listData = [noAvatarAndNoDate,avatarAndNoDate,avatarAndDate];
+
+React.render(
+  <List items={listData} text="My List"/>,
+  document.getElementById('list')
+);
