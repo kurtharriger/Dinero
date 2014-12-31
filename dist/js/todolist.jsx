@@ -43,7 +43,6 @@ var Item = React.createClass({
     }
   },
   handleChecked:function(e){
-    console.log("changed");
     this.onFieldUpdated("complete",e.target.checked);
   },
   render: function() {

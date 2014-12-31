@@ -49,7 +49,7 @@ var DemoItems = React.createClass({
     return itemData;
   },
   itemUpdated:function(field,value,componentProps){
-    var item = itemData[componentProps.objectKey];
+    var item = itemData[componentProps.key];
     item[field] = value;
     this.setState(itemData);
   },
@@ -58,10 +58,11 @@ var DemoItems = React.createClass({
     var items = _.map(
       this.state,
       function(item,key){
+        item.key = key;
         return (
           <div key={key}>
             <h5 className="margin-top text-info clear" >{key}</h5>
-            <Item data={item} objectKey={key} onFieldUpdated={that.itemUpdated}/>
+            <Item data={item} onFieldUpdated={that.itemUpdated}/>
             <br/>
           </div>
           );
@@ -76,6 +77,6 @@ var DemoItems = React.createClass({
 
 React.render(
   <DemoItems/>,
-  document.getElementById('items')
+  document.getElementById('item')
 );;
 
