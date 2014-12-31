@@ -1,31 +1,12 @@
-/* line 2, ../../scss/all.scss */
-.item {
-  width: 200px; }
-  /* line 4, ../../scss/all.scss */
-  .item .gripper {
-    background-image: url(/img/gripper-inactive.png);
-    background-color: #cccccc;
-    width: 11px;
-    height: 18px;
-    float: left; }
-  /* line 11, ../../scss/all.scss */
-  .item .checkbox-label {
-    float: left; }
-  /* line 14, ../../scss/all.scss */
-  .item .avatar {
-    width: 25px;
-    height: 25px;
-    float: left; }
-  /* line 19, ../../scss/all.scss */
-  .item .date {
-    float: left; }
-  /* line 22, ../../scss/all.scss */
-  .item .noDateDisplay {
-    background-image: url(/img/calendar.png);
-    width: 25px;
-    height: 25px;
-    float: left; }
-
-/* line 30, ../../scss/all.scss */
-.clear {
-  clear: both; }
+/* line 3, ../../scss/all.scss */
+.item .icon-drag {
+  font-size: x-large;
+  font-weight: bolder; }
+/* line 7, ../../scss/all.scss */
+.item .avatar {
+  width: 25px;
+  height: 25px; }
+/* line 11, ../../scss/all.scss */
+.item .icon-calendar {
+  font-size: x-large;
+  font-weight: bolder; }

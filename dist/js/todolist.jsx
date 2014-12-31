@@ -4,7 +4,6 @@ var DateDisplay = React.createClass({
     if(moment(date).isSame(new Date(), 'day')){
       return "Today"; 
     }
-
     if(moment(date).isSame(new Date(), 'year')){
       return moment(this.props.date).format("MMM DD"); 
     }
@@ -19,20 +18,19 @@ var DateDisplay = React.createClass({
   render:function(){
     if(this.props.date){
       var dateString = this.calculateDateString(this.props.date);
-      return ( 
-      <div className="dateDisplay">
+    }
+    else{
+      var nodateclass = "icon icon-calendar";
+    }
+    return ( 
+      <div className="dateDisplay col-sm-2">
+        <div className={nodateclass}></div>
         {dateString}
       </div>
-      )
-    }
-    else{   
-      return ( 
-        <div className="noDateDisplay">
-        </div>
-      )
-    }
+    );
   }
 });
+
 var Item = React.createClass({
   defaultProps:{
     text: "",
@@ -41,13 +39,13 @@ var Item = React.createClass({
   render: function() {
     var data = _.defaults(this.props.data,this.defaultProps);
     return (
-      <div className="item">
-        <div className="gripper"></div>
-        <label className="checkbox-label">
-          <input type="checkbox" checked={data.complete}/>
+      <div className="item row">
+        <div className="icon icon-drag col-sm-1"></div>
+        <label className="checkbox-label col-sm-6">
+          <input type="checkbox" defaultChecked={data.complete}/>
           {data.text}
         </label>
-        <img className="avatar" src={data.avatarUrl}/>
+        <img className="avatar col-sm-3" src={data.avatarUrl}/>
         <DateDisplay date={data.date}/>
       </div>
     );
@@ -79,13 +77,13 @@ var List = React.createClass({
         }
     );
     return (
-      <div className="list margin-top text-info">
-        <h3>{this.props.text}</h3>
+      <div className="list margin-top" >
+        <h3 className="text-info">{this.props.text}</h3>
         <div className="unarchived-items">
           {items}  
         </div>
         <div className="archived-items">
-          Archived
+          <span className="archived-text">Archived</span>
           {archivedItems}
         </div>
       </div>
