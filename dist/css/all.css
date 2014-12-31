@@ -19,10 +19,13 @@
   /* line 19, ../../scss/all.scss */
   .item .date {
     float: left; }
+  /* line 22, ../../scss/all.scss */
+  .item .noDateDisplay {
+    background-image: url(/img/calendar.png);
+    width: 25px;
+    height: 25px;
+    float: left; }
 
-/* line 24, ../../scss/all.scss */
-.noDateDisplay {
-  background-image: url(/img/calendar.png);
-  width: 25px;
-  height: 25px;
-  float: left; }
+/* line 30, ../../scss/all.scss */
+.clear {
+  clear: both; }

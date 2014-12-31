@@ -86,9 +86,13 @@ var List = React.createClass({
     return (
       <div className="list margin-top text-info">
         <h3>{this.props.text}</h3>
-        {items}  
-        Archived
-        {archivedItems}
+        <div className="unarchived-items">
+          {items}  
+        </div>
+        <div className="archived-items">
+          Archived
+          {archivedItems}
+        </div>
       </div>
     );
   }
