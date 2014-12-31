@@ -23,10 +23,10 @@ var DateDisplay = React.createClass({
       var nodateclass = "icon icon-calendar";
     }
     return ( 
-      <div className="dateDisplay col-sm-2">
+      <span className="date-display">
         <div className={nodateclass}></div>
         {dateString}
-      </div>
+      </span>
     );
   }
 });
@@ -41,12 +41,14 @@ var Item = React.createClass({
     return (
       <div className="item row">
         <div className="icon icon-drag col-sm-1"></div>
-        <label className="checkbox-label col-sm-6">
+        <label className="checkbox-label col-sm-7">
           <input type="checkbox" defaultChecked={data.complete}/>
           {data.text}
         </label>
-        <img className="avatar col-sm-3" src={data.avatarUrl}/>
-        <DateDisplay date={data.date}/>
+        <div className="col-sm-4">
+          <img className="avatar" src={data.avatarUrl}/>
+          <DateDisplay date={data.date}/>
+        </div>
       </div>
     );
   }

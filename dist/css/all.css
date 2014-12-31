@@ -4,9 +4,12 @@
   font-weight: bolder; }
 /* line 7, ../../scss/all.scss */
 .item .avatar {
-  width: 25px;
-  height: 25px; }
-/* line 11, ../../scss/all.scss */
+  width: 30px;
+  height: 30px; }
+/* line 10, ../../scss/all.scss */
+.item .date-display {
+  float: left; }
+/* line 13, ../../scss/all.scss */
 .item .icon-calendar {
   font-size: x-large;
   font-weight: bolder; }
