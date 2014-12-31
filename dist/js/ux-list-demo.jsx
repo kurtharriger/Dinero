@@ -10,9 +10,21 @@ var listData = [
   id:2,
   text:"Archived Item",
   archived:true,
-  checked:true
+  complete:true
+},
+{
+  id:5,
+  text:"Not much info here"
+},
+{
+  id:6,
+  text:"Finished this forever ago. Back when I was young and cool",
+  archived:true,
+  date:new Date(2014,11,1),
+  complete:true
 }
 ];
+debugger;
 React.render(
   <List items={listData} text="My List"/>,
   document.getElementById('list')

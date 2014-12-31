@@ -65,8 +65,8 @@ var Item = React.createClass({
 
 var List = React.createClass({
   render: function() {
-    var unarchivedItemData = _.filter(this.props.items,function(item){return !item.archived;},this.props.items);
-    var archivedItemData = _.filter(this.props.items,function(item){return item.archived;},this.props.items);
+    var unarchivedItemData = _.filter(this.props.items,function(item){return !item.archived;});
+    var archivedItemData = _.filter(this.props.items,function(item){return item.archived;});
     var items = 
       _.map(unarchivedItemData,
         (item)=>{
@@ -99,7 +99,7 @@ var List = React.createClass({
           {archivedItems}
         </div>
         <div>
-          <button className="btn btn-primary btn-xs add-button">
+          <button className="add-button">
             <span className="icon icon-add"></span> 
           </button>
           <span class="add-item-text">Add Item</span>
