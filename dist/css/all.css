@@ -13,3 +13,6 @@
 .item .icon-calendar {
   font-size: x-large;
   font-weight: bolder; }
+/* line 17, ../../scss/all.scss */
+.item .complete-true {
+  text-decoration: line-through; }

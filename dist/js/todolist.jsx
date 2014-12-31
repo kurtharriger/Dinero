@@ -34,7 +34,17 @@ var DateDisplay = React.createClass({
 var Item = React.createClass({
   defaultProps:{
     text: "",
-    avatarUrl: "/img/noavatar.png"
+    avatarUrl: "/img/noavatar.png",
+    complete:false
+  },
+  onFieldUpdated:function(field,value){
+    if(_.isFunction(this.props.onFieldUpdated)){
+      this.props.onFieldUpdated(field,value,this.props);
+    }
+  },
+  handleChecked:function(e){
+    console.log("changed");
+    this.onFieldUpdated("complete",e.target.checked);
   },
   render: function() {
     var data = _.defaults(this.props.data,this.defaultProps);
@@ -42,8 +52,8 @@ var Item = React.createClass({
       <div className="item row">
         <div className="icon icon-drag col-sm-1"></div>
         <label className="checkbox-label col-sm-7">
-          <input type="checkbox" defaultChecked={data.complete}/>
-          {data.text}
+          <input type="checkbox" defaultChecked={data.complete} onChange={this.handleChecked}/>
+          <span className={"complete-"+data.complete}> {data.text} </span>
         </label>
         <div className="col-sm-4">
           <img className="avatar" src={data.avatarUrl}/>
@@ -60,7 +70,7 @@ var List = React.createClass({
     var archivedItemData = _.filter(this.props.items,function(item){return item.archived;},this.props.items);
     var items = 
       _.map(unarchivedItemData,
-        function(item){
+        (item)=>{
          return (
            <div key={item.id} >
             <Item data={item} /> 
@@ -70,7 +80,7 @@ var List = React.createClass({
     );
     var archivedItems = 
       _.map(archivedItemData,
-        function(item){
+        (item)=>{
          return (
            <div key={item.id} >
             <Item data={item} /> 

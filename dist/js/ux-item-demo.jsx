@@ -45,14 +45,23 @@ var itemData={
 };
 
 var DemoItems = React.createClass({
+  getInitialState:function(){
+    return itemData;
+  },
+  itemUpdated:function(field,value,componentProps){
+    var item = itemData[componentProps.objectKey];
+    item[field] = value;
+    this.setState(itemData);
+  },
   render: function() {
+    var that = this;
     var items = _.map(
-      itemData,
+      this.state,
       function(item,key){
         return (
           <div key={key}>
             <h5 className="margin-top text-info clear" >{key}</h5>
-            <Item data={item}/>
+            <Item data={item} objectKey={key} onFieldUpdated={that.itemUpdated}/>
             <br/>
           </div>
           );
