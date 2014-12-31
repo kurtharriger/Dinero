@@ -2,33 +2,39 @@ var longName ={
   text:"Long Name - Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Dude"
 }
 var avatarAndTodayitem = {        
+  id:0,
   avatarUrl:"/img/ownerImage.jpg",
   text:"Due Today",
   date:new Date()
 };
 
 var avatarAndDate = {
+  id:1,
   avatarUrl:"/img/ownerImage.jpg",
   text:"Due Jan 1",
   date:new Date(2015,0,1)
 };
 
 var farDateItem = {        
+  id:2,
   date:new Date(2090,1,2),
   text:"I am due in the FUTURE"
 };
 
 var overDueItem = {        
+  id:3,
   date:new Date(2000,1,2),
   text:"Over Due Item"
 };
 var avatarAndNoDate = {        
+  id:4,
   avatarUrl:"/img/ownerImage.jpg",
-  text:"default text"
+  text:"My user has a pic"
 };
 
 var noAvatarAndNoDate = {        
-  text:"default text"
+  id:5,
+  text:"No much info here"
 };
 
 React.render(

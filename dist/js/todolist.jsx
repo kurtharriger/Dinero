@@ -63,7 +63,7 @@ var List = React.createClass({
   render: function() {
     var items = _.map(this.props.items,function(item){
      return (
-       <div>
+       <div key={item.id} >
         <Item data={item} /> 
        </div>
       );
