@@ -99,6 +99,9 @@ var List = React.createClass({
           <span className="archived-text">{archivedCount} Archived</span>
           {archivedItems}
         </div>
+        <div>
+          <span className="icon icon-add"></span> Add Item
+        </div>
       </div>
     );
   }
