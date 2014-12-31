@@ -37,6 +37,14 @@ var noAvatarAndNoDate = {
   text:"No much info here"
 };
 
+var archivedItem = {
+  id:6,
+  text:"Archived Item",
+  archived:true,
+  date:new Date(2014,11,1),
+  checked:true
+}
+
 React.render(
   <Item data={avatarAndNoDate} />,
   document.getElementById('avatar-nodate-item')
@@ -68,11 +76,14 @@ React.render(
   <Item data={overDueItem} />,
   document.getElementById('overdue-item')
 );
+React.render(
+  <Item data={archivedItem} />,
+  document.getElementById('archived-item')
+);
 
 
 
-
-var listData = [noAvatarAndNoDate,avatarAndNoDate,avatarAndDate];
+var listData = [noAvatarAndNoDate,avatarAndNoDate,avatarAndDate,archivedItem];
 
 React.render(
   <List items={listData} text="My List"/>,

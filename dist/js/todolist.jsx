@@ -61,17 +61,34 @@ var Item = React.createClass({
 
 var List = React.createClass({
   render: function() {
-    var items = _.map(this.props.items,function(item){
-     return (
-       <div key={item.id} >
-        <Item data={item} /> 
-       </div>
-      );
-    });
+    var unarchivedItemData = _.filter(this.props.items,function(item){return !item.archived;},this.props.items);
+    var archivedItemData = _.filter(this.props.items,function(item){return item.archived;},this.props.items);
+    var items = 
+      _.map(unarchivedItemData,
+        function(item){
+         return (
+           <div key={item.id} >
+            <Item data={item} /> 
+           </div>
+           )
+        }
+    );
+    var archivedItems = 
+      _.map(archivedItemData,
+        function(item){
+         return (
+           <div key={item.id} >
+            <Item data={item} /> 
+           </div>
+           )
+        }
+    );
     return (
       <div className="list margin-top text-info">
         <h3>{this.props.text}</h3>
         {items}  
+        Archived
+        {archivedItems}
       </div>
     );
   }
