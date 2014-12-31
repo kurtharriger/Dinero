@@ -22,4 +22,12 @@
 .list{
   .archived{
   }
+  .add-button{
+    -webkit-box-shadow: 3px 4px 3px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    2px 3px 2px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         2px 3px 2px 0px rgba(50, 50, 50, 0.75);
+  }
+  .add-item-text{
+    margin-left: 1rem;
+  }
 }

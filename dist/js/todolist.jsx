@@ -99,7 +99,10 @@ var List = React.createClass({
           {archivedItems}
         </div>
         <div>
-          <span className="icon icon-add"></span> Add Item
+          <button className="btn btn-primary btn-xs add-button">
+            <span className="icon icon-add"></span> 
+          </button>
+          <span class="add-item-text">Add Item</span>
         </div>
       </div>
     );
