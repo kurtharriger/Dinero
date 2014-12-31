@@ -76,6 +76,7 @@ var List = React.createClass({
            )
         }
     );
+    var archivedCount = archivedItems.length?archivedItems.length:"";
     return (
       <div className="list margin-top" >
         <h3 className="text-info">{this.props.text}</h3>
@@ -83,7 +84,7 @@ var List = React.createClass({
           {items}  
         </div>
         <div className="archived-items">
-          <span className="archived-text">Archived</span>
+          <span className="archived-text">{archivedCount} Archived</span>
           {archivedItems}
         </div>
       </div>
