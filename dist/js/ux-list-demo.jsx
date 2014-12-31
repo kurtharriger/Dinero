@@ -4,7 +4,7 @@ var listData = [
   avatarUrl:"/img/ownerImage.jpg",
   text:"Due Jan 1",
   date:new Date(2015,0,1),
-  checked:true
+  complete:true
 },
 {
   id:2,

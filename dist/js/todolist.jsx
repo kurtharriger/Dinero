@@ -33,23 +33,18 @@ var DateDisplay = React.createClass({
     }
   }
 });
-var defaultProps ={
-    text: "",
-    avatarUrl: "/img/noavatar.png",
-    date:null
-};
 var Item = React.createClass({
-  getInitialState: function() {
-    return {};
+  defaultProps:{
+    text: "",
+    avatarUrl: "/img/noavatar.png"
   },
-
   render: function() {
-    var data = _.defaults(this.props.data,defaultProps);
+    var data = _.defaults(this.props.data,this.defaultProps);
     return (
       <div className="item">
         <div className="gripper"></div>
         <label className="checkbox-label">
-          <input type="checkbox"/>
+          <input type="checkbox" checked={data.complete}/>
           {data.text}
         </label>
         <img className="avatar" src={data.avatarUrl}/>

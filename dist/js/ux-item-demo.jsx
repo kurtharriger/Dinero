@@ -7,7 +7,7 @@ var itemData={
     avatarUrl:"/img/ownerImage.jpg",
     text:"Due Today",
     date:new Date(),
-    checked:true
+    complete:true
   },
   "Avatar and Date":{
     id:1,
@@ -39,7 +39,7 @@ var itemData={
     text:"Finished this forever ago. Back when I was young and cool",
     archived:true,
     date:new Date(2014,11,1),
-    checked:true
+    complete:true
   }
 };
 
