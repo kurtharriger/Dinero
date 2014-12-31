@@ -17,7 +17,9 @@ var farDateItem = {
   date:new Date(2090,1,2)
 };
 
-
+var overDueItem = {        
+  date:new Date(2000,1,2)
+};
 var avatarAndNoDate = {        
   avatarUrl:"/img/ownerImage.jpg",
   text:"default text"
@@ -53,6 +55,13 @@ React.render(
   <Item data={avatarAndTodayitem} />,
   document.getElementById('avatar-today-item')
 );
+
+React.render(
+  <Item data={overDueItem} />,
+  document.getElementById('overdue-item')
+);
+
+
 
 
 var listData = [noAvatarAndNoDate,avatarAndNoDate,avatarAndDate];
