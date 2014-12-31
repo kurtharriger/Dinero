@@ -14,11 +14,13 @@ var avatarAndDate = {
 };
 
 var farDateItem = {        
-  date:new Date(2090,1,2)
+  date:new Date(2090,1,2),
+  text:"I am due in the FUTURE"
 };
 
 var overDueItem = {        
-  date:new Date(2000,1,2)
+  date:new Date(2000,1,2),
+  text:"Over Due Item"
 };
 var avatarAndNoDate = {        
   avatarUrl:"/img/ownerImage.jpg",
