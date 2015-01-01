@@ -24,7 +24,6 @@ var listData = [
   complete:true
 }
 ];
-debugger;
 React.render(
   <List items={listData} text="My List"/>,
   document.getElementById('list')
