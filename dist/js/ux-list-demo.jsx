@@ -25,6 +25,6 @@ var listData = [
 }
 ];
 React.render(
-  <List items={listData} text="My List"/>,
+  <List items={listData} text="My List" show="show"/>,
   document.getElementById('list')
 );

@@ -54,15 +54,14 @@ var DemoItems = React.createClass({
     this.setState(itemData);
   },
   render: function() {
-    var that = this;
     var items = _.map(
       this.state,
-      function(item,key){
+      (item,key)=>{
         item.key = key;
         return (
           <div key={key}>
             <h5 className="margin-top text-info clear" >{key}</h5>
-            <Item data={item} onFieldUpdated={that.itemUpdated}/>
+            <Item data={item} onFieldUpdated={this.itemUpdated}/>
             <br/>
           </div>
           );
