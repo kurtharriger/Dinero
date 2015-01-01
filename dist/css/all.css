@@ -17,13 +17,20 @@
 .item .complete-true {
   text-decoration: line-through; }
 
-/* line 25, ../../scss/all.scss */
+/* line 23, ../../scss/all.scss */
+.list .panel {
+  border: none; }
+/* line 26, ../../scss/all.scss */
+.list .panel-heading {
+  background-color: inherit;
+  border: none; }
+/* line 32, ../../scss/all.scss */
 .list .add-button {
   -webkit-box-shadow: 3px 4px 3px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow: 2px 3px 2px 0px rgba(50, 50, 50, 0.75);
   box-shadow: 2px 3px 2px 0px rgba(50, 50, 50, 0.75);
   padding: 1px;
   margin-right: 1rem; }
-/* line 32, ../../scss/all.scss */
+/* line 39, ../../scss/all.scss */
 .list .add-item-text {
   margin-left: 1rem; }

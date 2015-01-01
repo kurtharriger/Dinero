@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/lib/ux-bootstrap/css/ux-bootstrap-all.min.css" />
     <link rel="stylesheet" href="css/all.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -50,16 +51,25 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <div class="col-md-offset-1 col-md-10">
-    <h3><em>Item Component Examples</em></h3>
-    <div id="item"></div>
+  <div class=".container-fluid">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title" >Item Component Examples</h3>
+      </div>
+      <div class="col-md-offset-1 col-md-7">
+      </div>
+      <div class="col-md-4 pull-right">
+        <div id="item"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-7">
+        <h3>List Component Example</h3>
+      </div>
+      <div class="col-md-4 pull-right">
+        <div id="list"></div>
+      </div>
   </div>
-  <br/>
-  <div class="col-md-offset-2 col-md-10" style="margin-top: 6em;clear: both;}">
-    <h3><em>List Component Example</em></h3>
-    <h5 class="margin-top text-info">List</h5>
-    <div id="list"></div>
-    <br>
-  </div>
+</div>
   </body>
 </html>

@@ -20,6 +20,13 @@
 }
 
 .list{
+  .panel{
+    border:none;
+  }
+  .panel-heading{
+    background-color:inherit;
+    border:none;
+  }
   .archived{
   }
   .add-button{
