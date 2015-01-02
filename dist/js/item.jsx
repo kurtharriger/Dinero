@@ -37,7 +37,6 @@ var DateDisplay = React.createClass({
 var Item = React.createClass({
   defaultProps:{
     text: "",
-    avatarUrl: "/img/noavatar.png",
     complete:false
   },
   onFieldUpdated:function(field,value){
@@ -51,6 +50,11 @@ var Item = React.createClass({
   render: function() {
     var data = _.defaults(this.props.data,this.defaultProps);
     var hideAvatarClass = this.props.hideAvatars?"hidden":"";
+    if(data.avatarUrl)
+      var avatarElement = <img className={"avatar "+hideAvatarClass} src={data.avatarUrl}/>;
+    else
+      var avatarElement = <div className={"glyphicon glyphicon-user avatar "+hideAvatarClass} src={data.avatarUrl}/>;
+
     return (
       <div className="item row">
         <div className="icon icon-drag col-sm-1"></div>
@@ -59,7 +63,7 @@ var Item = React.createClass({
           <span className={"complete-"+data.complete}> {data.text} </span>
         </label>
         <div className="col-sm-4">
-          <img className={"avatar "+hideAvatarClass} src={data.avatarUrl}/>
+        {avatarElement}
           <DateDisplay hide={this.props.hideDates} date={data.date}/>
         </div>
       </div>
