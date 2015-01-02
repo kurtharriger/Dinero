@@ -18,8 +18,10 @@ var Todo = React.createClass({
       hideDates:!this.state.hideDates 
     });
   },
-  render: function() {
-    var lists = _.map(this.props.lists,
+  filterToListComponentsByArchived:function(l,value){
+    var lists = _.filter(l,(list)=>{return list.archived===value});
+    return _.map(
+      lists,
       (list)=>{
       return (
         <div key={list.id}  className="row list-container">
@@ -27,6 +29,10 @@ var Todo = React.createClass({
         </div>
       );
     });
+  },
+  render: function() {
+    var lists = this.filterToListComponentsByArchived(this.props.lists,false);
+    var archivedLists = this.filterToListComponentsByArchived(this.props.lists,true);
     return (
       <div className="todo margin-top">
         <div>
@@ -52,8 +58,13 @@ var Todo = React.createClass({
         <div className="row">
           {lists}
         </div>
-        <div className="row">
-        2 Archived Lists
+        <div className="row panel-title">
+          <h5><a data-toggle="collapse" href="#todo-archived">
+            2 Archived Lists 
+          </a></h5>
+          <div id="todo-archived" className="collapse">
+            {archivedLists}
+          </div>
         </div>
       </div>
     );
