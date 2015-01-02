@@ -29,7 +29,7 @@ var List = React.createClass({
         (item)=>{
          var itemComponent = (
            <div key={item.id} >
-            <Item data={item} /> 
+            <Item data={item} hideAvatars={this.props.hideAvatars} hideDates={this.props.hideDates} /> 
            </div>
            );
          return itemComponent;

@@ -16,6 +16,9 @@ var DateDisplay = React.createClass({
   },
 
   render:function(){
+    if(this.props.hide){
+      return <span className="date-display"></span>
+    }
     if(this.props.date){
       var dateString = this.calculateDateString(this.props.date);
     }
@@ -47,6 +50,7 @@ var Item = React.createClass({
   },
   render: function() {
     var data = _.defaults(this.props.data,this.defaultProps);
+    var hideAvatarClass = this.props.hideAvatars?"hidden":"";
     return (
       <div className="item row">
         <div className="icon icon-drag col-sm-1"></div>
@@ -55,8 +59,8 @@ var Item = React.createClass({
           <span className={"complete-"+data.complete}> {data.text} </span>
         </label>
         <div className="col-sm-4">
-          <img className="avatar" src={data.avatarUrl}/>
-          <DateDisplay className="pull-left" date={data.date}/>
+          <img className={"avatar "+hideAvatarClass} src={data.avatarUrl}/>
+          <DateDisplay hide={this.props.hideDates} date={data.date}/>
         </div>
       </div>
     );

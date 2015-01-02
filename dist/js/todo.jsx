@@ -4,18 +4,18 @@ var Todo = React.createClass({
   },
   getInitialState:function(){
     return {
-      showAvatars:true,
-      showDates:true
+      hideAvatars:false,
+      hideDates:false
     };
   },
   toggleShowAvatars:function(){
     this.setState({
-      showAvatars:!this.state.showAvatars 
+      hideAvatars:!this.state.hideAvatars 
     });
   },
   toggleShowDates:function(){
     this.setState({
-      showDates:!this.state.showDates 
+      hideDates:!this.state.hideDates 
     });
   },
   render: function() {
@@ -23,7 +23,7 @@ var Todo = React.createClass({
       (list)=>{
       return (
         <div key={list.id}  className="row list-container">
-          <List text={list.text} items={list.items} showAvatars={this.state.showAvatars} showDates={this.state.showDates} />
+          <List text={list.text} items={list.items} hideAvatars={this.state.hideAvatars} hideDates={this.state.hideDates} />
         </div>
       );
     });
@@ -37,8 +37,8 @@ var Todo = React.createClass({
           </div>
           <div className="col-md-7">
             <h6 className="pull-left"> SHOW </h6>
-            <button className={"glyphicon glyphicon-user selected-" + !this.state.showAvatars} onClick={this.toggleShowAvatars}></button>
-            <button className={"icon icon-calendar selected-" + !this.state.showDates} onClick={this.toggleShowDates}></button>
+            <button className={"glyphicon glyphicon-user selected-" + this.state.hideAvatars} onClick={this.toggleShowAvatars}></button>
+            <button className={"icon icon-calendar selected-" + this.state.hideDates} onClick={this.toggleShowDates}></button>
           </div>
         </div>
         <div className="row">
