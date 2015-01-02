@@ -37,8 +37,10 @@ var Todo = React.createClass({
           </div>
           <div className="col-md-7">
             <h6 className="pull-left"> SHOW </h6>
-            <button className={"glyphicon glyphicon-user selected-" + this.state.hideAvatars} onClick={this.toggleShowAvatars}></button>
-            <button className={"icon icon-calendar selected-" + this.state.hideDates} onClick={this.toggleShowDates}></button>
+            <div className="btn-group">
+              <button className={"glyphicon glyphicon-user selected-" + this.state.hideAvatars} onClick={this.toggleShowAvatars}></button>
+              <button className={"icon icon-calendar selected-" + this.state.hideDates} onClick={this.toggleShowDates}></button>
+            </div>
           </div>
         </div>
         <div className="row">
