@@ -54,7 +54,7 @@ var List = React.createClass({
       <div className="list margin-top" >
         <div className="row">
           <h4 className="text-info col-sm-8">{this.props.text}</h4>
-          <a className="col-sm-2" data-toggle="collapse" href={"#"+collapseRandomId2} onClick={this.toggleShow}>
+          <a className="col-sm-2" href={"#"+collapseRandomId2} onClick={this.toggleShow}>
             <div className={topIcon}></div>
             <div className={bottomIcon}></div>
           </a>
@@ -79,7 +79,7 @@ var List = React.createClass({
             </div>
           </div>
         </div>
-        <div>
+        <div className="margin-bottom">
           <button className="add-button">
             <span className="icon icon-add"></span> 
           </button>
