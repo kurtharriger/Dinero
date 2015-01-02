@@ -6,7 +6,8 @@
   }
   .avatar{
     width:30px;
-    height:30px;}
+    height:30px;
+  }
   .date-display{
     float:left;
   }
@@ -38,5 +39,15 @@
   }
   .add-item-text{
     margin-left: 1rem;
+  }
+}
+
+.todo{
+  .selected-true{
+    background-color: rgb(51, 51, 51);
+    color: #FFF;  
+  }
+  button:focus{
+    outline:none;
   }
 }

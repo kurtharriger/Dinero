@@ -56,7 +56,7 @@ var Item = React.createClass({
         </label>
         <div className="col-sm-4">
           <img className="avatar" src={data.avatarUrl}/>
-          <DateDisplay date={data.date}/>
+          <DateDisplay className="pull-left" date={data.date}/>
         </div>
       </div>
     );

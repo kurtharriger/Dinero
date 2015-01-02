@@ -12,7 +12,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
     <script type="text/jsx;harmony=true" src="js/item.jsx"></script>
     <script type="text/jsx;harmony=true" src="js/list.jsx"></script>
+    <script type="text/jsx;harmony=true" src="js/todo.jsx"></script>
     <script type="text/jsx;harmony=true" src="js/ux-item-demo.jsx"></script>
+    <script type="text/jsx;harmony=true" src="js/ux-todo-demo.jsx"></script>
     <script type="text/jsx;harmony=true" src="js/ux-list-demo.jsx"></script>
   </head>
   <body>
@@ -35,6 +37,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components</a>
             <ul class="dropdown-menu">
+              <li><a href="/#todo">Todo</a></li>
               <li><a href="/#list">List</a></li>
               <li><a href="/#item">Item</a></li>
             </ul>
@@ -52,6 +55,17 @@
     </div><!-- /.container-fluid -->
   </nav>
   <div class="container-fluid">
+    <div class="row panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Todo Component Examples</h3>
+      </div>
+      <div class="col-md-offset-1 col-md-7">
+      </div>
+      <div class="col-md-4 pull-right">
+        <div id="todo" className="margin-bottom"></div>
+      </div>
+    </div>
+
     <div class="row panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">List Component Examples</h3>

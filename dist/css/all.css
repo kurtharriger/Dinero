@@ -6,31 +6,39 @@
 .item .avatar {
   width: 30px;
   height: 30px; }
-/* line 10, ../../scss/all.scss */
+/* line 11, ../../scss/all.scss */
 .item .date-display {
   float: left; }
-/* line 13, ../../scss/all.scss */
+/* line 14, ../../scss/all.scss */
 .item .icon-calendar {
   font-size: x-large;
   font-weight: bolder; }
-/* line 17, ../../scss/all.scss */
+/* line 18, ../../scss/all.scss */
 .item .complete-true {
   text-decoration: line-through; }
 
-/* line 23, ../../scss/all.scss */
+/* line 24, ../../scss/all.scss */
 .list .panel {
   border: none; }
-/* line 26, ../../scss/all.scss */
+/* line 27, ../../scss/all.scss */
 .list .panel-heading {
   background-color: inherit;
   border: none; }
-/* line 32, ../../scss/all.scss */
+/* line 33, ../../scss/all.scss */
 .list .add-button {
   -webkit-box-shadow: 3px 4px 3px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow: 2px 3px 2px 0px rgba(50, 50, 50, 0.75);
   box-shadow: 2px 3px 2px 0px rgba(50, 50, 50, 0.75);
   padding: 1px;
   margin-right: 1rem; }
-/* line 39, ../../scss/all.scss */
+/* line 40, ../../scss/all.scss */
 .list .add-item-text {
   margin-left: 1rem; }
+
+/* line 46, ../../scss/all.scss */
+.todo .selected-true {
+  background-color: #333333;
+  color: #FFF; }
+/* line 50, ../../scss/all.scss */
+.todo button:focus {
+  outline: none; }
