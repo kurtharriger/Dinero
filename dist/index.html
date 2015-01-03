@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head> 
-    <link rel="stylesheet" href="/lib/ux-bootstrap/css/ux-bootstrap-all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/ux-bootstrap/css/ux-bootstrap-all.min.css" />
     <link rel="stylesheet" href="css/all.css" />
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/lib/ux-bootstrap/js/ux-bootstrap-all.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.12.1/react.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.12.1/JSXTransformer.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-    <script type="text/jsx;harmony=true" src="js/todolist.jsx"></script>
-    <script type="text/jsx;harmony=true" src="js/ux-playground.jsx"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="lib/ux-bootstrap/js/ux-bootstrap-all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.1/JSXTransformer.js"></script>
+    <script src="https:/cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
   </head>
   <body>
   <nav class="navbar navbar-default navbar-inverse" role="navigation">
@@ -31,7 +31,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components</a>
             <ul class="dropdown-menu">
-              <li><a href="/#todolist">TodoList</a></li>
+              <li><a href="/#todo">Todo</a></li>
+              <li><a href="/#list">List</a></li>
+              <li><a href="/#item">Item</a></li>
             </ul>
           </li>
         </ul>
@@ -46,23 +48,37 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <div class="col-md-offset-1 col-md-10">
-    <h3><em>Item Component</em></h3>
-    <h5 class="margin-top text-info">Item with Date and Avatar</h5>
-    <div id="avatar-date-item"></div>
-    <br>
-    <h5 class="margin-top text-info">Item with no Date and Avatar</h5>
-    <div id="avatar-nodate-item"></div>
-    <br>
-    <h5 class="margin-top text-info">Item with no Date and no Avatar</h5>
-    <div id="noavatar-nodate-item"></div>
+  <div class="container-fluid">
+    <div class="row panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Todo Component Examples</h3>
+      </div>
+      <div class="col-md-offset-1 col-md-7">
+      </div>
+      <div class="col-md-4 pull-right">
+        <div id="todo" className="margin-bottom"></div>
+      </div>
+    </div>
+
+    <div class="row panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">List Component Examples</h3>
+      </div>
+      <div class="col-md-offset-1 col-md-7">
+      </div>
+      <div class="col-md-4 pull-right">
+        <div id="list"></div>
+      </div>
+    </div>
+    <div class="row panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Item Component Example</h3>
+      </div>
+      <div class="col-md-offset-8 col-md-4 pull-right">
+      <div class="margin-bottom" id="item"></div>
+    </div>
   </div>
-  <br/>
-  <div class="col-md-offset-2 col-md-10">
-    <h3><em>List Component</em></h3>
-    <h5 class="margin-top text-info">List</h5>
-    <div id="list"></div>
-    <br>
-  </div>
+</div>
   </body>
+  <script src="js/combined.js"></script>
 </html>
