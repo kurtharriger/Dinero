@@ -1,0 +1,7 @@
+<script>
+var parts = window.location.href.split("/");
+var end = parts.pop();
+parts.push("dist");
+parts.push(end);
+window.location.href = parts.join("/");
+</script>
