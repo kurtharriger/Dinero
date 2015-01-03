@@ -21,16 +21,20 @@ module.exports = function (grunt) {
     },
     react: {
       combined_file_output: {
-        files: {
+        files: [{
           'dist/js/combined.js': [
             'jsx/item.jsx',
             'jsx/todo.jsx',
-            'jsx/list.jsx',
+            'jsx/list.jsx'          ]
+        },
+        {
+          'dist/js/playground.js': [ 
             'jsx/ux-list-demo.jsx',
             'jsx/ux-todo-demo.jsx',
-            'jsx/ux-item-demo.jsx',
+            'jsx/ux-item-demo.jsx'
           ]
-        },
+
+        }],
       options: {
         harmony: true
       }

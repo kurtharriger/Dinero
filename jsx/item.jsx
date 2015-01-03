@@ -58,13 +58,17 @@ var Item = React.createClass({
     return (
       <div className="item row">
         <div className="icon icon-drag col-sm-1"></div>
-        <label className="checkbox-label col-sm-7">
+        <label className="checkbox-label col-sm-2">
           <input type="checkbox" defaultChecked={data.complete} onChange={this.handleChecked}/>
-          <span className={"complete-"+data.complete}> {data.text} </span>
         </label>
-        <div className="col-sm-4">
-        {avatarElement}
-          <DateDisplay hide={this.props.hideDates} date={data.date}/>
+        <div className="col-sm-8 row">
+          <div>
+            <span className={"complete-"+data.complete}> {data.text} </span>
+          </div>
+          <div>
+            {avatarElement}
+            <DateDisplay hide={this.props.hideDates} date={data.date}/>
+          </div>
         </div>
       </div>
     );
