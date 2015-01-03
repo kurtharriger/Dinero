@@ -240,7 +240,7 @@ var List = React.createClass({displayName: "List",
 var listData = [
 {
   id:1,
-  avatarUrl:"/img/ownerImage.jpg",
+  avatarUrl:"img/ownerImage.jpg",
   text:"Due Jan 1",
   date:new Date(2015,0,1),
   complete:true
@@ -276,7 +276,7 @@ var listOneData =
   items:[
   {
     id:1,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Jan 1",
     date:new Date(2015,0,1),
     complete:true
@@ -307,7 +307,7 @@ var listTwoData = {
   items:[
   {
     id:1,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Jan 1",
     date:new Date(2015,0,1),
     complete:true
@@ -338,7 +338,7 @@ var listThreeData = {
   items:[
   {
     id:1,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Jan 1",
     date:new Date(2015,0,1),
     complete:true
@@ -375,14 +375,14 @@ React.render(
   },
   "Avatar and Today":{        
     id:0,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Today",
     date:new Date(),
     complete:true
   },
   "Avatar and Date":{
     id:1,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Jan 1",
     date:new Date(2015,0,1)
   },
@@ -398,7 +398,7 @@ React.render(
   },
   "Avatar without Date":{        
     id:4,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"My user has a pic"
   },
   "No Avatar and No Date":{

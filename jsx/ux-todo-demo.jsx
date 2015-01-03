@@ -6,7 +6,7 @@ var listOneData =
   items:[
   {
     id:1,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Jan 1",
     date:new Date(2015,0,1),
     complete:true
@@ -37,7 +37,7 @@ var listTwoData = {
   items:[
   {
     id:1,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Jan 1",
     date:new Date(2015,0,1),
     complete:true
@@ -68,7 +68,7 @@ var listThreeData = {
   items:[
   {
     id:1,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Jan 1",
     date:new Date(2015,0,1),
     complete:true

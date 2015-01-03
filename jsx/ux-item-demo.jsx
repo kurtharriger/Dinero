@@ -5,14 +5,14 @@
   },
   "Avatar and Today":{        
     id:0,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Today",
     date:new Date(),
     complete:true
   },
   "Avatar and Date":{
     id:1,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"Due Jan 1",
     date:new Date(2015,0,1)
   },
@@ -28,7 +28,7 @@
   },
   "Avatar without Date":{        
     id:4,
-    avatarUrl:"/img/ownerImage.jpg",
+    avatarUrl:"img/ownerImage.jpg",
     text:"My user has a pic"
   },
   "No Avatar and No Date":{
