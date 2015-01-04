@@ -42,7 +42,7 @@ var List = React.createClass({
            <div key={item.id} >
             <Item data={item} /> 
            </div>
-           )
+           );
         }
     );
     var archivedCount = archivedItems.length?archivedItems.length:"";

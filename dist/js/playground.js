@@ -91,7 +91,7 @@ var listTwoData = {
     complete:true
   }
   ]
-}
+};
 var listThreeData = {
   id:2,
   text:"List Three",
@@ -208,5 +208,4 @@ var DemoItems = React.createClass({displayName: "DemoItems",
 React.render(
   React.createElement(DemoItems, null),
   document.getElementById('item')
-);;
-
+);

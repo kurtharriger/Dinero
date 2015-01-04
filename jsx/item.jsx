@@ -17,7 +17,7 @@ var DateDisplay = React.createClass({
 
   render:function(){
     if(this.props.hide){
-      return <span className="date-display"></span>
+      return <span className="date-display"></span>;
     }
     if(this.props.date){
       var dateString = this.calculateDateString(this.props.date);
@@ -50,10 +50,9 @@ var Item = React.createClass({
   render: function() {
     var data = _.defaults(this.props.data,this.defaultProps);
     var hideAvatarClass = this.props.hideAvatars?"hidden":"";
-    if(data.avatarUrl)
-      var avatarElement = <img className={"avatar "+hideAvatarClass} src={data.avatarUrl}/>;
-    else
-      var avatarElement = <div className={"glyphicon glyphicon-user avatar "+hideAvatarClass} src={data.avatarUrl}/>;
+    var avatarElement = data.avatarUrl?
+      <img className={"avatar "+hideAvatarClass} src={data.avatarUrl}/>:
+      <div className={"glyphicon glyphicon-user avatar "+hideAvatarClass} src={data.avatarUrl}/>;
 
     return (
       <div className="item row">

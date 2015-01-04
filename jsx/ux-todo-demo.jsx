@@ -60,7 +60,7 @@ var listTwoData = {
     complete:true
   }
   ]
-}
+};
 var listThreeData = {
   id:2,
   text:"List Three",

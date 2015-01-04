@@ -77,5 +77,4 @@ var DemoItems = React.createClass({
 React.render(
   <DemoItems/>,
   document.getElementById('item')
-);;
-
+);

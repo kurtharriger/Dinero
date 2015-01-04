@@ -80,7 +80,7 @@ module.exports = function (grunt) {
       jsx: {
         files: ['jsx/*'],
         options: {},
-        tasks: ['react']
+        tasks: ['react','jshint']
       },
       css: {
         files: ['dist/css/*.css'],
@@ -94,6 +94,19 @@ module.exports = function (grunt) {
           livereload: reloadPort
         }
       }
+    },
+
+    jshint: {
+        options: {
+          node: true,
+          esnext: true,
+          curly: true,
+          indent: 2,
+          funcscope: true
+        },
+        all: {
+          src: ['./**/*.jsx', '!Gruntfile.js', '!./node_modules/**', '!./dist/**']
+        }
     }
   });
 

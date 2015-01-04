@@ -17,7 +17,7 @@ var DateDisplay = React.createClass({displayName: "DateDisplay",
 
   render:function(){
     if(this.props.hide){
-      return React.createElement("span", {className: "date-display"})
+      return React.createElement("span", {className: "date-display"});
     }
     if(this.props.date){
       var dateString = this.calculateDateString(this.props.date);
@@ -50,10 +50,9 @@ var Item = React.createClass({displayName: "Item",
   render: function() {
     var data = _.defaults(this.props.data,this.defaultProps);
     var hideAvatarClass = this.props.hideAvatars?"hidden":"";
-    if(data.avatarUrl)
-      var avatarElement = React.createElement("img", {className: "avatar "+hideAvatarClass, src: data.avatarUrl});
-    else
-      var avatarElement = React.createElement("div", {className: "glyphicon glyphicon-user avatar "+hideAvatarClass, src: data.avatarUrl});
+    var avatarElement = data.avatarUrl?
+      React.createElement("img", {className: "avatar "+hideAvatarClass, src: data.avatarUrl}):
+      React.createElement("div", {className: "glyphicon glyphicon-user avatar "+hideAvatarClass, src: data.avatarUrl});
 
     return (
       React.createElement("div", {className: "item row"}, 
@@ -96,7 +95,7 @@ var Todo = React.createClass({displayName: "Todo",
     });
   },
   filterToListComponentsByArchived:function(l,value){
-    var lists = _.filter(l,function(list){return list.archived===value});
+    var lists = _.filter(l,function(list){return list.archived===value;});
     return _.map(
       lists,
       function(list){
@@ -192,7 +191,7 @@ var List = React.createClass({displayName: "List",
            React.createElement("div", {key: item.id}, 
             React.createElement(Item, {data: item})
            )
-           )
+           );
         }
     );
     var archivedCount = archivedItems.length?archivedItems.length:"";

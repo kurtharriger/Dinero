@@ -19,7 +19,7 @@ var Todo = React.createClass({
     });
   },
   filterToListComponentsByArchived:function(l,value){
-    var lists = _.filter(l,(list)=>{return list.archived===value});
+    var lists = _.filter(l,(list)=>{return list.archived===value;});
     return _.map(
       lists,
       (list)=>{
