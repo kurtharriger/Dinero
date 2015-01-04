@@ -1,12 +1,7 @@
-var data = {
-  id:2,
-  text:"List One",
-  archived:false,
-  items:[]
-};
-
-Rally.onReady(function(){
-  function translateStoryToItem(story){
+TeamCheckList.DataManager = class DataManager {
+  constructor() {
+  }
+  translateStoryToItem(story) {
     var scheduleState = story.raw.ScheduleState;
     var complete = (scheduleState === "Completed") || (scheduleState === "Accepted");
     var archived = (scheduleState === "Accepted");
@@ -18,23 +13,26 @@ Rally.onReady(function(){
       archived:archived
     };
   }
-  Ext.create('Rally.data.wsapi.Store', {
+  getStoryRecords() {
+    return Ext.create('Rally.data.wsapi.Store', {
       model: 'UserStory',
       fetch: ["PortfolioItem","Name","c_DueDate","Owner","Rank","ScheduleState"],
       order:"Rank",
-      autoLoad: true,
-      listeners: {
-        load: (store,records)=>{
-          var items = _.map(records,(record)=>
-          {
-            return translateStoryToItem(record);
-          });
-          data.items = items;
-          React.render(
-            React.createElement(List, {items: data.items, text: data.text, show: "show"}),
-            document.getElementById('rally')
-          );
-        }
-      }
-  });    
-});
+    })
+    .load();  
+  }
+  getItems() {
+    var deferred = Q.defer();
+    this.getStoryRecords()
+    .then((records)=>{
+      var items = _.map(records,(record)=>
+      {
+        return this.translateStoryToItem(record);
+      });
+      deferred.resolve(items);
+    });
+
+    return deferred.promise;
+  }
+};
+

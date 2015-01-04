@@ -38,8 +38,8 @@ module.exports = function (grunt) {
         },
         {
           'dist/js/rally.js': [ 
-            'jsx/rallyData.jsx',
-            'jsx/rally.jsx'
+            'jsx/rally.jsx',
+            'jsx/rallyData.jsx'
           ]
         }],
         options: {
