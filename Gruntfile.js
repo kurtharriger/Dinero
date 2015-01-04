@@ -19,13 +19,15 @@ module.exports = function (grunt) {
         file: 'index.js'
       }
     },
+    
     react: {
       combined_file_output: {
         files: [{
           'dist/js/combined.js': [
             'jsx/item.jsx',
             'jsx/todo.jsx',
-            'jsx/list.jsx'          ]
+            'jsx/list.jsx'          
+          ]
         },
         {
           'dist/js/playground.js': [ 
@@ -33,71 +35,66 @@ module.exports = function (grunt) {
             'jsx/ux-todo-demo.jsx',
             'jsx/ux-item-demo.jsx'
           ]
-
         }],
-      options: {
-        harmony: true
-      }
-      },
-
-    },
-      sass: {
-        dev: {
-          options: {
-            lineNumbers: true,
-            compass: true,
-            sourcemap: 'none'
-          },
-          files: {
-            'dist/css/all.css': 'scss/all.scss'
-          }
-        }
-      },
-
-      watch: {
         options: {
-          nospawn: true,
-          livereload: reloadPort
+          harmony: true
+        }
+      },
+    },
+    
+    sass: {
+      dev: {
+        options: {
+          lineNumbers: true,
+          compass: true,
+          sourcemap: 'none'
         },
-
-        sass: {
-          // We watch and compile sass files as normal but don't live reload here
-          files: ['scss/*.scss'],
-          tasks: ['sass']
-        },
-
-        server: {
-          files: [
-            'index.js'
-          ],
-          tasks: ['develop', 'delayed-livereload']
-        },
-
-        js: {
-          files: ['dist/js/*'],
-          options: {
-            livereload: reloadPort
-          }
-        },
-        jsx: {
-          files: ['jsx/*'],
-          options: {},
-          tasks: ['react']
-        },
-        css: {
-          files: ['dist/css/*.css'],
-          options: {
-            livereload: reloadPort
-          }
-        },
-
-        static: {
-          files: ['dist/*.html'],
-          options: {
-            livereload: reloadPort
-          }
+        files: {
+          'dist/css/all.css': 'scss/all.scss'
         }
       }
+    },
+
+    watch: {
+      options: {
+        nospawn: true,
+        livereload: reloadPort
+      },
+      sass: {
+        // We watch and compile sass files as normal but don't live reload here
+        files: ['scss/*.scss'],
+        tasks: ['sass']
+      },
+      server: {
+        files: [
+          'index.js'
+        ],
+        tasks: ['develop', 'delayed-livereload']
+      },
+      js: {
+        files: ['dist/js/*'],
+        options: {
+          livereload: reloadPort
+        }
+      },
+      jsx: {
+        files: ['jsx/*'],
+        options: {},
+        tasks: ['react']
+      },
+      css: {
+        files: ['dist/css/*.css'],
+        options: {
+          livereload: reloadPort
+        }
+      },
+      static: {
+        files: ['dist/*.html'],
+        options: {
+          livereload: reloadPort
+        }
+      }
+    }
   });
 
   grunt.config.requires('watch.server.files');
