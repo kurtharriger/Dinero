@@ -1,39 +1,3 @@
-var DateDisplay = React.createClass({displayName: "DateDisplay",
-  calculateDateString:function(date){
-    //TODO: this needs unit tests
-    if(moment(date).isSame(new Date(), 'day')){
-      return "Today"; 
-    }
-    if(moment(date).isSame(new Date(), 'year')){
-      return moment(this.props.date).format("MMM DD"); 
-    }
-    var threeMonthsFromNow = moment(new Date()).add(3, 'months');
-    var threeMonthsAgo = moment(new Date()).subtract(3, 'months');
-    if(moment(date).isBefore(threeMonthsFromNow) && moment(date).isAfter(threeMonthsAgo)){
-      return moment(this.props.date).format("MMM DD"); 
-    }
-    return moment(this.props.date).format("MMM DD, YYYY"); 
-  },
-
-  render:function(){
-    if(this.props.hide){
-      return React.createElement("span", {className: "date-display"});
-    }
-    if(this.props.date){
-      var dateString = this.calculateDateString(this.props.date);
-    }
-    else{
-      var nodateclass = "icon icon-calendar";
-    }
-    return ( 
-      React.createElement("span", {className: "date-display"}, 
-        React.createElement("div", {className: nodateclass}), 
-        dateString
-      )
-    );
-  }
-});
-
 var Item = React.createClass({displayName: "Item",
   defaultProps:{
     text: "",
@@ -149,6 +113,42 @@ var Todo = React.createClass({displayName: "Todo",
   }
 });
 
+var DateDisplay = React.createClass({displayName: "DateDisplay",
+  calculateDateString:function(date){
+    //TODO: this needs unit tests
+    if(moment(date).isSame(new Date(), 'day')){
+      return "Today"; 
+    }
+    if(moment(date).isSame(new Date(), 'year')){
+      return moment(this.props.date).format("MMM DD"); 
+    }
+    var threeMonthsFromNow = moment(new Date()).add(3, 'months');
+    var threeMonthsAgo = moment(new Date()).subtract(3, 'months');
+    if(moment(date).isBefore(threeMonthsFromNow) && moment(date).isAfter(threeMonthsAgo)){
+      return moment(this.props.date).format("MMM DD"); 
+    }
+    return moment(this.props.date).format("MMM DD, YYYY"); 
+  },
+
+  render:function(){
+    if(this.props.hide){
+      return React.createElement("span", {className: "date-display"});
+    }
+    if(this.props.date){
+      var dateString = this.calculateDateString(this.props.date);
+    }
+    else{
+      var nodateclass = "icon icon-calendar";
+    }
+    return ( 
+      React.createElement("span", {className: "date-display"}, 
+        React.createElement("div", {className: nodateclass}), 
+        dateString
+      )
+    );
+  }
+});
+
 var List = React.createClass({displayName: "List",
   toggleShow:function(){
     var show = this.state.show === "show" ? false : "show";
@@ -195,7 +195,7 @@ var List = React.createClass({displayName: "List",
       React.createElement("div", {className: "list margin-top"}, 
         React.createElement("div", {className: "row"}, 
           React.createElement("h4", {className: "text-info col-sm-8"}, this.props.text), 
-          React.createElement("a", {className: "col-sm-2", href: "#"+collapseRandomId2, onClick: this.toggleShow}, 
+          React.createElement("a", {className: "col-sm-2", href: "#", onClick: this.toggleShow}, 
             React.createElement("div", {className: topIcon}), 
             React.createElement("div", {className: bottomIcon})
           )

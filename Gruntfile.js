@@ -26,6 +26,7 @@ module.exports = function (grunt) {
           'dist/js/combined.js': [
             'jsx/item.jsx',
             'jsx/todo.jsx',
+            'jsx/date.jsx',
             'jsx/list.jsx'          
           ]
         },
