@@ -1,6 +1,8 @@
 var Todo = React.createClass({
-  getInitialProps:function(){
-    return {};
+  getDefaultProps:function(){
+    return {
+      onStateChange:()=>{}
+    };
   },
   getInitialState:function(){
     return {
@@ -25,7 +27,7 @@ var Todo = React.createClass({
       (list)=>{
       return (
         <div key={list.id}  className="row list-container">
-          <List text={list.text} items={list.items} hideAvatars={this.state.hideAvatars} hideDates={this.state.hideDates} />
+          <List text={list.text} items={list.items} hideAvatars={this.state.hideAvatars} hideDates={this.state.hideDates} onStateChange={this.props.onStateChange} />
         </div>
       );
     });

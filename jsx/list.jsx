@@ -5,15 +5,23 @@ var List = React.createClass({
       show:show
     });
   },
-  getInitialProps:function(){
+  getDefaultProps:function(){
     return {
-      show:false
+      show:false,
+      onStateChange:()=>{}
     };
   },
   getInitialState:function(){
     return {};
   },
+  createItem:function(item){
+    return  (
+      <div key={item.id} >
+        <Item data={item} id={item.id} hideAvatars={this.props.hideAvatars} hideDates={this.props.hideDates} onStateChange={this.props.onStateChange} /> 
+      </div>
+    );
 
+  },
   render: function() {
     if(!this.state.hasOwnProperty("show")){
       this.state.show = this.props.show;
@@ -24,27 +32,9 @@ var List = React.createClass({
 
     var unarchivedItemData = _.filter(this.props.items,(item)=>{return !item.archived;});
     var archivedItemData = _.filter(this.props.items,(item)=>{return item.archived;});
-    var items = 
-      _.map(unarchivedItemData,
-        (item)=>{
-         var itemComponent = (
-           <div key={item.id} >
-            <Item data={item} hideAvatars={this.props.hideAvatars} hideDates={this.props.hideDates} /> 
-           </div>
-           );
-         return itemComponent;
-        }
-    );
-    var archivedItems = 
-      _.map(archivedItemData,
-        (item)=>{
-         return (
-           <div key={item.id} >
-            <Item data={item} /> 
-           </div>
-           );
-        }
-    );
+    var items =  _.map(unarchivedItemData,this.createItem);
+    var archivedItems = _.map(archivedItemData,this.createItem); 
+
     var archivedCount = archivedItems.length?archivedItems.length:"";
     //TODO: use an incrementer to avoid the uncommon times where these collide
     var collapseRandomId1 = "collapse-"+Math.floor(Math.random()*100000);

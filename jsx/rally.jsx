@@ -2,15 +2,16 @@
 var TeamCheckList = {};
 Rally.onReady(function(){
   $("link[href^='https://rally1']").remove();
-  var rdm = new TeamCheckList.DataManager();
-  Q.all([
-    rdm.getStoryRecords(),
-    rdm.getPortfolioItemRecords()
-  ])
-  .spread((stories,portfolioItems)=>{
-    var lists = rdm.organizeStoryRecordsIntoLists(stories,portfolioItems);
+  var rdm = new TeamCheckList.DataManager(()=>{
+    console.log(arguments);
+  });
+  var updateState = (id,field,value)=>{
+    rdm.update(id,field,value);
+  };
+  rdm.getLists()
+  .then((lists)=>{
     React.render(
-      <Todo lists={lists} />,
+      <Todo lists={lists} onStateChange={updateState} />,
       document.getElementById('rally')
     );
   })

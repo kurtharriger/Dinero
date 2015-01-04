@@ -40,8 +40,8 @@ var Item = React.createClass({
     complete:false
   },
   onFieldUpdated:function(field,value){
-    if(_.isFunction(this.props.onFieldUpdated)){
-      this.props.onFieldUpdated(field,value,this.props);
+    if(_.isFunction(this.props.onStateChange)){
+      this.props.onStateChange(this.props.id,field,value);
     }
   },
   handleChecked:function(e){

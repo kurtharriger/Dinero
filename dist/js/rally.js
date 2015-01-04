@@ -2,15 +2,16 @@
 var TeamCheckList = {};
 Rally.onReady(function(){
   $("link[href^='https://rally1']").remove();
-  var rdm = new TeamCheckList.DataManager();
-  Q.all([
-    rdm.getStoryRecords(),
-    rdm.getPortfolioItemRecords()
-  ])
-  .spread(function(stories,portfolioItems){
-    var lists = rdm.organizeStoryRecordsIntoLists(stories,portfolioItems);
+  var rdm = new TeamCheckList.DataManager(function(){
+    console.log(arguments);
+  });
+  var updateState = function(id,field,value){
+    rdm.update(id,field,value);
+  };
+  rdm.getLists()
+  .then(function(lists){
     React.render(
-      React.createElement(Todo, {lists: lists}),
+      React.createElement(Todo, {lists: lists, onStateChange: updateState}),
       document.getElementById('rally')
     );
   })
@@ -21,15 +22,20 @@ Rally.onReady(function(){
 
 
 TeamCheckList.DataManager = (function(){
-  function DataManager() {"use strict";
-    this.objectCache = {};
+  function DataManager(onStateChange) {"use strict";
+    if(!_.isFunction(onStateChange)){
+      throw new Error("onStateChange is required");
+    }
+    this.onStateChange = onStateChange;
+    this.storyCache = {};
+    this.portfolioItemCache = {};
   }
   DataManager.prototype.translateStoryToItem=function(story) {"use strict";
     var scheduleState = story.raw.ScheduleState;
     var complete = (scheduleState === "Completed") || (scheduleState === "Accepted");
     var archived = (scheduleState === "Accepted");
     return {
-      id:story.raw.ObjectId,
+      id:story.raw.ObjectID,
       text:story.raw.Name,
       date:story.raw.c_DueDate,
       complete:complete,
@@ -56,7 +62,7 @@ TeamCheckList.DataManager = (function(){
     .load()
     .then(function(stories){
       _.each(stories,function(story){
-        this.objectCache[story.data.ObjectID] = story;
+        this.storyCache[story.data.ObjectID] = story;
       }.bind(this));
       deferred.resolve(stories);
     }.bind(this));
@@ -72,7 +78,7 @@ TeamCheckList.DataManager = (function(){
     .load()
     .then(function(portfolioItems){
       _.each(portfolioItems,function(portfolioItem){
-        this.objectCache[portfolioItem.data.ObjectID] = portfolioItem;
+        this.portfolioItemCache[portfolioItem.data.ObjectID] = portfolioItem;
       }.bind(this));
       deferred.resolve(portfolioItems);
     }.bind(this));
@@ -90,7 +96,34 @@ TeamCheckList.DataManager = (function(){
       return story.get("PortfolioItem").ObjectID;
     });
     return _.map(portfolioItems,function(portfolioItem){
-      return this.translatePortfolioItemToList(portfolioItem,lists[portfolioItem.data.ObjectID])
+      return this.translatePortfolioItemToList(portfolioItem,lists[portfolioItem.data.ObjectID]);
+    }.bind(this));
+  };
+  DataManager.prototype.update=function(id,field,value){"use strict";
+    if(this.storyCache[id]){
+      this.updateStory(this.storyCache[id],field,value);
+    }
+  };
+  DataManager.prototype.updateStory=function(record,field,value){"use strict";
+    switch(field) {
+      case "complete":
+        record.set("ScheduleState",value?"Completed":"In-Progress");
+        break;
+      case "text":
+        record.set("Name",value);
+        break;
+    }
+    record.save();
+    this.onStateChange(this.organizeStoryRecordsIntoLists(this.storyCache,this.portfolioItems));
+  };
+  DataManager.prototype.getLists=function() {"use strict";
+    return Q.all([
+      this.getStoryRecords(),
+      this.getPortfolioItemRecords()
+    ])
+    .spread(function(stories,portfolioItems){
+      var lists = this.organizeStoryRecordsIntoLists(stories,portfolioItems);
+      return lists;
     }.bind(this));
   };
 return DataManager;})();

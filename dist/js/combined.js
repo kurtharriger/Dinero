@@ -40,8 +40,8 @@ var Item = React.createClass({displayName: "Item",
     complete:false
   },
   onFieldUpdated:function(field,value){
-    if(_.isFunction(this.props.onFieldUpdated)){
-      this.props.onFieldUpdated(field,value,this.props);
+    if(_.isFunction(this.props.onStateChange)){
+      this.props.onStateChange(this.props.id,field,value);
     }
   },
   handleChecked:function(e){
@@ -75,8 +75,10 @@ var Item = React.createClass({displayName: "Item",
 });
 
 var Todo = React.createClass({displayName: "Todo",
-  getInitialProps:function(){
-    return {};
+  getDefaultProps:function(){
+    return {
+      onStateChange:function(){}
+    };
   },
   getInitialState:function(){
     return {
@@ -101,7 +103,7 @@ var Todo = React.createClass({displayName: "Todo",
       function(list){
       return (
         React.createElement("div", {key: list.id, className: "row list-container"}, 
-          React.createElement(List, {text: list.text, items: list.items, hideAvatars: this.state.hideAvatars, hideDates: this.state.hideDates})
+          React.createElement(List, {text: list.text, items: list.items, hideAvatars: this.state.hideAvatars, hideDates: this.state.hideDates, onStateChange: this.props.onStateChange})
         )
       );
     }.bind(this));
@@ -154,15 +156,23 @@ var List = React.createClass({displayName: "List",
       show:show
     });
   },
-  getInitialProps:function(){
+  getDefaultProps:function(){
     return {
-      show:false
+      show:false,
+      onStateChange:function(){}
     };
   },
   getInitialState:function(){
     return {};
   },
+  createItem:function(item){
+    return  (
+      React.createElement("div", {key: item.id}, 
+        React.createElement(Item, {data: item, id: item.id, hideAvatars: this.props.hideAvatars, hideDates: this.props.hideDates, onStateChange: this.props.onStateChange})
+      )
+    );
 
+  },
   render: function() {
     if(!this.state.hasOwnProperty("show")){
       this.state.show = this.props.show;
@@ -173,27 +183,9 @@ var List = React.createClass({displayName: "List",
 
     var unarchivedItemData = _.filter(this.props.items,function(item){return !item.archived;});
     var archivedItemData = _.filter(this.props.items,function(item){return item.archived;});
-    var items = 
-      _.map(unarchivedItemData,
-        function(item){
-         var itemComponent = (
-           React.createElement("div", {key: item.id}, 
-            React.createElement(Item, {data: item, hideAvatars: this.props.hideAvatars, hideDates: this.props.hideDates})
-           )
-           );
-         return itemComponent;
-        }.bind(this)
-    );
-    var archivedItems = 
-      _.map(archivedItemData,
-        function(item){
-         return (
-           React.createElement("div", {key: item.id}, 
-            React.createElement(Item, {data: item})
-           )
-           );
-        }
-    );
+    var items =  _.map(unarchivedItemData,this.createItem);
+    var archivedItems = _.map(archivedItemData,this.createItem); 
+
     var archivedCount = archivedItems.length?archivedItems.length:"";
     //TODO: use an incrementer to avoid the uncommon times where these collide
     var collapseRandomId1 = "collapse-"+Math.floor(Math.random()*100000);
