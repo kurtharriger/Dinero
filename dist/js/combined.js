@@ -136,7 +136,7 @@ var Todo = React.createClass({displayName: "Todo",
         ), 
         React.createElement("div", {className: "row panel-title"}, 
           React.createElement("h5", null, React.createElement("a", {"data-toggle": "collapse", href: "#todo-archived"}, 
-            "2 Archived Lists" 
+            "Archived Lists" 
           )), 
           React.createElement("div", {id: "todo-archived", className: "collapse"}, 
             archivedLists

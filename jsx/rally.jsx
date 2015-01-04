@@ -3,12 +3,19 @@ var TeamCheckList = {};
 Rally.onReady(function(){
   $("link[href^='https://rally1']").remove();
   var rdm = new TeamCheckList.DataManager();
-  rdm.getItems()
-  .then((items)=>{
-    console.log(items);
+  Q.all([
+    rdm.getStoryRecords(),
+    rdm.getPortfolioItemRecords()
+  ])
+  .spread((stories,portfolioItems)=>{
+    var lists = rdm.organizeStoryRecordsIntoLists(stories,portfolioItems);
     React.render(
-      <List items={items} text="My List" show="show"/>,
+      <Todo lists={lists} />,
       document.getElementById('rally')
     );
+  })
+  .fail((er)=>{
+    console.error(er.stack);
   });
 });
+

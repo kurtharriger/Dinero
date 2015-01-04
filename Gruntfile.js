@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         {
           'dist/js/rally.js': [ 
             'jsx/rally.jsx',
-            'jsx/rallyData.jsx'
+            'jsx/rally-data-manager.jsx'
           ]
         }],
         options: {
@@ -136,7 +136,7 @@ module.exports = function (grunt) {
   });
 
   //add css convention/lint and jslint
-  grunt.registerTask('default', ['develop','watch']);
+  grunt.registerTask('default', ['react','develop','watch']);
 
   grunt.registerTask('ci', function(type) {
     grunt.task.run('build');

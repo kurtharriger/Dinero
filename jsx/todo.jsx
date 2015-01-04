@@ -60,7 +60,7 @@ var Todo = React.createClass({
         </div>
         <div className="row panel-title">
           <h5><a data-toggle="collapse" href="#todo-archived">
-            2 Archived Lists 
+            Archived Lists 
           </a></h5>
           <div id="todo-archived" className="collapse">
             {archivedLists}
