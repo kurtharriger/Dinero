@@ -35,6 +35,12 @@ module.exports = function (grunt) {
             'jsx/ux-todo-demo.jsx',
             'jsx/ux-item-demo.jsx'
           ]
+        },
+        {
+          'dist/js/rally.js': [ 
+            'jsx/rallyData.jsx',
+            'jsx/rally.jsx'
+          ]
         }],
         options: {
           harmony: true
@@ -105,7 +111,7 @@ module.exports = function (grunt) {
           funcscope: true
         },
         all: {
-          src: ['./**/*.jsx', '!Gruntfile.js', '!./node_modules/**', '!./dist/**']
+          src: ['jsx/*.jsx']
         }
     }
   });
