@@ -61,10 +61,19 @@ var Item = React.createClass({displayName: "Item",
   }
 });
 
-var Todo = React.createClass({displayName: "Todo",
+var Todo = React.createClass({displayName: "Todo",  
+  propTypes: {
+    // onStateChange:React.PropTypes.funct,
+    // onItemAdd:React.PropTypes.funct
+  },
   getDefaultProps:function(){
     return {
-      onStateChange:function(){}
+      onStateChange:function(){
+        console.log("onStateChange Event Called");
+      },
+      onItemAdd:function(){
+        console.log("onItemAdd Event Called");
+      }
     };
   },
   getInitialState:function(){
@@ -90,7 +99,14 @@ var Todo = React.createClass({displayName: "Todo",
       function(list){
       return (
         React.createElement("div", {key: list.id, className: "row list-container"}, 
-          React.createElement(List, {text: list.text, items: list.items, hideAvatars: this.state.hideAvatars, hideDates: this.state.hideDates, onStateChange: this.props.onStateChange})
+          React.createElement(List, {
+          text: list.text, 
+          items: list.items, 
+          hideAvatars: this.state.hideAvatars, 
+          hideDates: this.state.hideDates, 
+          onStateChange: this.props.onStateChange, 
+          onItemAdd: this.props.onItemAdd}
+          )
         )
       );
     }.bind(this));
@@ -186,7 +202,9 @@ var List = React.createClass({displayName: "List",
     };
   },
   getInitialState:function(){
-    return {};
+    return {
+      newItem:false
+    };
   },
   createItem:function(item){
     return  (
@@ -203,12 +221,20 @@ var List = React.createClass({displayName: "List",
         )
       )
     );
-
+  },
+  createNewItem:function(){
+    return (
+      React.createElement("div", null, 
+        React.createElement(Item, {
+        text: "", 
+        id: 0, 
+        hideAvatars: this.props.hideAvatars, 
+        onStateChange: this.handleNewItemChange, 
+        hideDates: this.props.hideDates}
+        )
+      ));
   },
   render: function() {
-    if(!this.state.hasOwnProperty("show")){
-      this.state.show = this.props.show;
-    }
     var collapse = this.state.show?"collapse.in":"collapse";
     var topIcon = this.state.show?"icon icon-arrow-down":"icon icon-arrow-up";
     var bottomIcon = this.state.show?"icon icon-arrow-up":"icon icon-arrow-down";
@@ -217,6 +243,7 @@ var List = React.createClass({displayName: "List",
     var archivedItemData = _.filter(this.props.items,function(item){return item.archived;});
     var items =  _.map(unarchivedItemData,this.createItem);
     var archivedItems = _.map(archivedItemData,this.createItem); 
+    var newItem = this.state.newItem? this.createNewItem():"";
 
     var archivedCount = archivedItems.length?archivedItems.length:"";
     //TODO: use an incrementer to avoid the uncommon times where these collide
@@ -234,7 +261,8 @@ var List = React.createClass({displayName: "List",
         ), 
         React.createElement("div", {id: collapseRandomId2, className: collapse}, 
         React.createElement("div", {className: "unarchived-items"}, 
-          items
+          items, 
+          newItem
         ), 
         React.createElement("div", {className: "panel panel-default"}, 
           React.createElement("div", {className: "panel-heading"}, 
@@ -253,7 +281,7 @@ var List = React.createClass({displayName: "List",
           )
         ), 
         React.createElement("div", {className: "margin-bottom"}, 
-          React.createElement("button", {className: "add-button"}, 
+          React.createElement("button", {className: "add-button", onClick: this.handleNewClick}, 
             React.createElement("span", {className: "icon icon-add"})
           ), 
           React.createElement("span", {className: "add-item-text"}, "Add Item")
@@ -261,5 +289,12 @@ var List = React.createClass({displayName: "List",
         )
       )
     );
+  },
+  handleNewClick:function(){
+    this.setState({newItem:true});
+  },
+  handleNewItemChange:function(){
+    this.props.onItemAdd()
+    .then(function(){console.log(arguments);});
   }
 });

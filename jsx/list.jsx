@@ -12,7 +12,9 @@ var List = React.createClass({
     };
   },
   getInitialState:function(){
-    return {};
+    return {
+      newItem:false
+    };
   },
   createItem:function(item){
     return  (
@@ -29,12 +31,20 @@ var List = React.createClass({
         />
       </div>
     );
-
+  },
+  createNewItem:function(){
+    return (
+      <div>
+        <Item 
+        text="" 
+        id={0}
+        hideAvatars={this.props.hideAvatars}
+        onStateChange={this.handleNewItemChange} 
+        hideDates={this.props.hideDates}         
+        />
+      </div>);
   },
   render: function() {
-    if(!this.state.hasOwnProperty("show")){
-      this.state.show = this.props.show;
-    }
     var collapse = this.state.show?"collapse.in":"collapse";
     var topIcon = this.state.show?"icon icon-arrow-down":"icon icon-arrow-up";
     var bottomIcon = this.state.show?"icon icon-arrow-up":"icon icon-arrow-down";
@@ -43,6 +53,7 @@ var List = React.createClass({
     var archivedItemData = _.filter(this.props.items,(item)=>{return item.archived;});
     var items =  _.map(unarchivedItemData,this.createItem);
     var archivedItems = _.map(archivedItemData,this.createItem); 
+    var newItem = this.state.newItem? this.createNewItem():"";
 
     var archivedCount = archivedItems.length?archivedItems.length:"";
     //TODO: use an incrementer to avoid the uncommon times where these collide
@@ -61,6 +72,7 @@ var List = React.createClass({
         <div id={collapseRandomId2} className={collapse}>
         <div className="unarchived-items">
           {items}  
+          {newItem}
         </div>
         <div className="panel panel-default">
           <div className="panel-heading">
@@ -79,7 +91,7 @@ var List = React.createClass({
           </div>
         </div>
         <div className="margin-bottom">
-          <button className="add-button">
+          <button className="add-button" onClick={this.handleNewClick}>
             <span className="icon icon-add"></span> 
           </button>
           <span className="add-item-text">Add Item</span>
@@ -87,5 +99,12 @@ var List = React.createClass({
         </div> 
       </div>
     );
+  },
+  handleNewClick:function(){
+    this.setState({newItem:true});
+  },
+  handleNewItemChange:function(){
+    this.props.onItemAdd()
+    .then(()=>{console.log(arguments);});
   }
 });

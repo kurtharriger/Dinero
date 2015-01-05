@@ -11,7 +11,7 @@ Rally.onReady(function(){
   rdm.getLists()
   .then(function(lists){
     React.render(
-      React.createElement(Todo, {lists: lists, onStateChange: updateState}),
+      React.createElement(Todo, {lists: lists, onStateChange: updateState, onItemAdd: rdm.addItem}),
       document.getElementById('rally')
     );
   })
@@ -125,6 +125,10 @@ TeamCheckList.DataManager = (function(){
       var lists = this.organizeStoryRecordsIntoLists(stories,portfolioItems);
       return lists;
     }.bind(this));
+  };
+  DataManager.prototype.addItem=function(item){"use strict";
+    console.log(item);
+    return Q("w00t");
   };
 return DataManager;})();
 

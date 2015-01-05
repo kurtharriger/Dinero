@@ -11,7 +11,7 @@ Rally.onReady(function(){
   rdm.getLists()
   .then((lists)=>{
     React.render(
-      <Todo lists={lists} onStateChange={updateState} />,
+      <Todo lists={lists} onStateChange={updateState} onItemAdd={rdm.addItem} />,
       document.getElementById('rally')
     );
   })

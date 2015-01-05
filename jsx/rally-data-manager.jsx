@@ -103,5 +103,9 @@ TeamCheckList.DataManager = class DataManager {
       return lists;
     });
   }
+  addItem(item){
+    console.log(item);
+    return Q("w00t");
+  }
 };
 

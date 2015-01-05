@@ -1,7 +1,16 @@
-var Todo = React.createClass({
+var Todo = React.createClass({  
+  propTypes: {
+    // onStateChange:React.PropTypes.funct,
+    // onItemAdd:React.PropTypes.funct
+  },
   getDefaultProps:function(){
     return {
-      onStateChange:()=>{}
+      onStateChange:()=>{
+        console.log("onStateChange Event Called");
+      },
+      onItemAdd:()=>{
+        console.log("onItemAdd Event Called");
+      }
     };
   },
   getInitialState:function(){
@@ -27,7 +36,14 @@ var Todo = React.createClass({
       (list)=>{
       return (
         <div key={list.id}  className="row list-container">
-          <List text={list.text} items={list.items} hideAvatars={this.state.hideAvatars} hideDates={this.state.hideDates} onStateChange={this.props.onStateChange} />
+          <List 
+          text={list.text} 
+          items={list.items} 
+          hideAvatars={this.state.hideAvatars} 
+          hideDates={this.state.hideDates} 
+          onStateChange={this.props.onStateChange}
+          onItemAdd={this.props.onItemAdd}
+          />
         </div>
       );
     });
