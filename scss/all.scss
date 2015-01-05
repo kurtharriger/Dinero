@@ -3,6 +3,23 @@
   .icon-drag {
     font-size:x-large;
   }
+  .text{
+    width:100%;
+    text-overflow: ellipsis;
+    border:none;
+  }
+  .text:focus{
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-width: 2px; 
+  }
+  .text:hover{
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-width: 2px;  
+  }
   .avatar{
     width:30px;
     height:30px;

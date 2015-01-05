@@ -2,44 +2,61 @@
 .item .icon-drag {
   font-size: x-large; }
 /* line 6, ../../scss/all.scss */
+.item .text {
+  width: 100%;
+  text-overflow: ellipsis;
+  border: none; }
+/* line 11, ../../scss/all.scss */
+.item .text:focus {
+  outline: -webkit-focus-ring-color auto 5px;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 2px; }
+/* line 17, ../../scss/all.scss */
+.item .text:hover {
+  outline: -webkit-focus-ring-color auto 5px;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 2px; }
+/* line 23, ../../scss/all.scss */
 .item .avatar {
   width: 30px;
   height: 30px;
   font-size: x-large;
   font-weight: bolder; }
-/* line 12, ../../scss/all.scss */
+/* line 29, ../../scss/all.scss */
 .item .date-display {
   float: left; }
-/* line 15, ../../scss/all.scss */
+/* line 32, ../../scss/all.scss */
 .item .icon-calendar {
   font-size: x-large;
   font-weight: bolder; }
-/* line 19, ../../scss/all.scss */
+/* line 36, ../../scss/all.scss */
 .item .complete-true {
   text-decoration: line-through; }
 
-/* line 25, ../../scss/all.scss */
+/* line 42, ../../scss/all.scss */
 .list .panel {
   border: none; }
-/* line 28, ../../scss/all.scss */
+/* line 45, ../../scss/all.scss */
 .list .panel-heading {
   background-color: inherit;
   border: none; }
-/* line 34, ../../scss/all.scss */
+/* line 51, ../../scss/all.scss */
 .list .add-button {
   -webkit-box-shadow: 3px 4px 3px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow: 2px 3px 2px 0px rgba(50, 50, 50, 0.75);
   box-shadow: 2px 3px 2px 0px rgba(50, 50, 50, 0.75);
   padding: 1px;
   margin-right: 1rem; }
-/* line 41, ../../scss/all.scss */
+/* line 58, ../../scss/all.scss */
 .list .add-item-text {
   margin-left: 1rem; }
 
-/* line 47, ../../scss/all.scss */
+/* line 64, ../../scss/all.scss */
 .todo .selected-true {
   background-color: #333333;
   color: #FFF; }
-/* line 51, ../../scss/all.scss */
+/* line 68, ../../scss/all.scss */
 .todo button:focus {
   outline: none; }

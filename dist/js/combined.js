@@ -1,36 +1,59 @@
 var Item = React.createClass({displayName: "Item",
-  defaultProps:{
-    text: "",
-    complete:false
+  propTypes: {
+    text:React.PropTypes.string.isRequired,
+    avatarUrl:React.PropTypes.string,
+    hideDates:React.PropTypes.bool,
+    hideAvatars:React.PropTypes.bool,
+    complete:React.PropTypes.bool,
+    archived:React.PropTypes.bool
+  },
+  getInitialState:function(){
+    return {text: this.props.text };
+  },
+  getDefaultProps:function(){
+    return { 
+      onStateChange:function(){},
+      complete:false,
+      archived:false
+    };
   },
   onFieldUpdated:function(field,value){
-    if(_.isFunction(this.props.onStateChange)){
-      this.props.onStateChange(this.props.id,field,value);
-    }
+    this.props.onStateChange(this.props.id,field,value);
   },
   handleChecked:function(e){
     this.onFieldUpdated("complete",e.target.checked);
   },
+  handleTextChange:function(e){
+    this.setState({ text: e.target.value });
+  },
+  handleTextBlur:function(e){
+    this.onFieldUpdated("text",this.state.text);
+  },
   render: function() {
-    var data = _.defaults(this.props.data,this.defaultProps);
     var hideAvatarClass = this.props.hideAvatars?"hidden":"";
-    var avatarElement = data.avatarUrl?
-      React.createElement("img", {className: "avatar "+hideAvatarClass, src: data.avatarUrl}):
-      React.createElement("div", {className: "glyphicon glyphicon-user avatar "+hideAvatarClass, src: data.avatarUrl});
+    var props = this.props;
+    var avatarElement = this.props.avatarUrl?
+      React.createElement("img", {className: "avatar "+hideAvatarClass, src: props.avatarUrl}):
+      React.createElement("div", {className: "glyphicon glyphicon-user avatar "+hideAvatarClass, src: props.avatarUrl});
 
     return (
       React.createElement("div", {className: "item row"}, 
         React.createElement("div", {className: "icon icon-drag col-sm-1"}), 
-        React.createElement("label", {className: "checkbox-label col-sm-2"}, 
-          React.createElement("input", {type: "checkbox", defaultChecked: data.complete, onChange: this.handleChecked})
+        React.createElement("label", {className: "checkbox-label col-sm-1"}, 
+          React.createElement("input", {type: "checkbox", defaultChecked: props.complete, onChange: this.handleChecked})
         ), 
-        React.createElement("div", {className: "col-sm-8 row"}, 
+        React.createElement("div", {className: "col-sm-10 row"}, 
           React.createElement("div", null, 
-            React.createElement("span", {className: "complete-"+data.complete}, " ", data.text, " ")
+            React.createElement("input", {className: "text complete-"+props.complete, 
+              value: this.state.text, 
+              placeholder: "New Item", 
+              onChange: this.handleTextChange, 
+              onBlur: this.handleTextBlur}
+            )
           ), 
           React.createElement("div", null, 
             avatarElement, 
-            React.createElement(DateDisplay, {hide: this.props.hideDates, date: data.date})
+            React.createElement(DateDisplay, {hide: this.props.hideDates, date: props.date})
           )
         )
       )
@@ -168,7 +191,16 @@ var List = React.createClass({displayName: "List",
   createItem:function(item){
     return  (
       React.createElement("div", {key: item.id}, 
-        React.createElement(Item, {data: item, id: item.id, hideAvatars: this.props.hideAvatars, hideDates: this.props.hideDates, onStateChange: this.props.onStateChange})
+        React.createElement(Item, {
+        text: item.text, 
+        date: item.date, 
+        archived: item.archived, 
+        complete: item.complete, 
+        id: item.id, 
+        hideAvatars: this.props.hideAvatars, 
+        onStateChange: this.props.onStateChange, 
+        hideDates: this.props.hideDates}
+        )
       )
     );
 

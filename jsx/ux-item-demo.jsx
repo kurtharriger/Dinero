@@ -61,7 +61,7 @@ var DemoItems = React.createClass({
         return (
           <div key={key}>
             <h5 className="margin-top text-info clear" >{key}</h5>
-            <Item data={item} onFieldUpdated={this.itemUpdated}/>
+            <Item text={item.text} date={item.date} archived={item.archived} complete={item.complete} id={item.id} onFieldUpdated={this.itemUpdated}/>
             <br/>
           </div>
           );

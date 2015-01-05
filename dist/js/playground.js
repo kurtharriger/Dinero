@@ -192,7 +192,7 @@ var DemoItems = React.createClass({displayName: "DemoItems",
         return (
           React.createElement("div", {key: key}, 
             React.createElement("h5", {className: "margin-top text-info clear"}, key), 
-            React.createElement(Item, {data: item, onFieldUpdated: this.itemUpdated}), 
+            React.createElement(Item, {text: item.text, date: item.date, archived: item.archived, complete: item.complete, id: item.id, onFieldUpdated: this.itemUpdated}), 
             React.createElement("br", null)
           )
           );

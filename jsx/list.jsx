@@ -17,7 +17,16 @@ var List = React.createClass({
   createItem:function(item){
     return  (
       <div key={item.id} >
-        <Item data={item} id={item.id} hideAvatars={this.props.hideAvatars} hideDates={this.props.hideDates} onStateChange={this.props.onStateChange} /> 
+        <Item 
+        text={item.text} 
+        date={item.date} 
+        archived={item.archived} 
+        complete={item.complete} 
+        id={item.id}
+        hideAvatars={this.props.hideAvatars}
+        onStateChange={this.props.onStateChange} 
+        hideDates={this.props.hideDates}         
+        />
       </div>
     );
 
